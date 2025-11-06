@@ -60,7 +60,7 @@ a:focus-visible {
   margin: 15px;
 }
 
-a[role="menuitem"]:focus {	
+a[role="menuitem"]:focus-visible {	
 outline: 3px solid rgb(255, 187, 0);	
 outline-offset: 2px;	
 }
@@ -174,7 +174,7 @@ outline-offset: 2px;
 <tr>
 <th width="15%" id="robin6">Film</th>
 <th id="robin7">U.S. release date</th>
-<th id="robin8">Bruce Wayne</th>
+<th id="robin8">Actor</th>
 <th id="robin9">Director</th>
 <th width="15%" id="robin10">Screenwriter(s)</th>
 <th width="15%" id="robin11">Story by</th>
@@ -448,12 +448,16 @@ outline-offset: 2px;
 <script>
 function myFunction() {
   var x = document.getElementById("myDIV");
+  var toggleBtn = document.querySelector('button[onclick="myFunction()"]');
+
   if (x.style.display === "none") {
     x.style.display = "block";
+    x.setAttribute('tabindex', '-1'); // makes content focusable
+    x.focus(); // move focus to the revealed section
   } else {
     x.style.display = "none";
+    toggleBtn.focus(); // return focus to the button
   }
-    //document.activeElement.blur();
 }
 
 function searchPage() {
