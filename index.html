@@ -142,6 +142,14 @@ outline-offset: 2px;
 
 </header>
 
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#wb-cont">Campaigns</a></li>
+    <li><a href="#becoming-a-batman">How to Become a Batman</a></li>
+  </ol>
+</nav>
+
 <main class="container" property="mainContentOfPage" resource="#wb-main" typeof="WebPageElement"><h1 property="name" id="wb-cont">Campaign name</h1>
 
 
@@ -257,7 +265,7 @@ outline-offset: 2px;
 
 
 
-<h2>Subscribe to batman mailling list</h2>
+<h2 id="contact">Subscribe to batman mailling list</h2>
 
 <p>Instruction: Click on the green button to register</p>
 <form>
@@ -271,7 +279,7 @@ outline-offset: 2px;
 
 
 
-<h2>Logos</h2>
+<h2 id="logos">Logos</h2>
 
 <p>A sample of various logos durant the years</p>
 <div class="row">
@@ -315,7 +323,7 @@ outline-offset: 2px;
 
 
 
-<h2>How to become a Batman</h2>
+<h2 id="becoming-a-batman">How to become a Batman</h2>
 
 <p>Becoming Batman would require more than just physical strength; it would involve developing a wide range of skills, intelligence, and resources. Here are six steps to becoming like Batman:</p>
 
@@ -349,7 +357,7 @@ outline-offset: 2px;
 
 <section>
 
-<h2>Other super heros</h2>
+<h2 id="movies">Other super heros</h2>
 
 <p>The best super heros are listed in the middle</p>
 
@@ -407,11 +415,26 @@ outline-offset: 2px;
 <div class="container">
 <nav>
 
-<h3>About us</h3>
-<ul class="list-col-xs-1 list-col-sm-2 list-col-md-3">
-<li><a href="#">All contacts</a></li>
-<li><a href="#">Our team</a></li>
-<li><a href="#">Read about accessibility</a></li></ul>
+<div class="row">
+  <div class="col-md-6 col-sm-6">
+    <h3>About us</h3>
+      <ul>
+      <li><a href="#">All contacts</a></li>
+      <li><a href="#">Our team</a></li>
+      <li><a href="#">Read about accessibility</a></li>
+    </ul>
+  </div>
+  <div class="col-md-6 col-sm-6">
+    <h3>Site Map</h3>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#wb-cont">Main Content</a></li>
+      <li><a href="#movies">Batman Movies</a></li>
+      <li><a href="#logos">Logos</a></li>
+      <li><a href="#contact">Contact / Subscribe</a></li>
+    </ul>
+  </div>
+</div>
 
 </nav>
 </div>
