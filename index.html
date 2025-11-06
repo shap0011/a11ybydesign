@@ -102,19 +102,6 @@ outline-offset: 2px;
 </div>
 </form> -->
 
-<!-- <form onsubmit="return searchPage();" role="search">
-  <div class="form-group wb-srch-qry">
-    <label for="wb-srch-q" class="wb-inv">Search this page</label>
-    <input id="wb-srch-q" class="wb-srch-q form-control" name="q" type="search"
-           placeholder="Search content..." />
-  </div>
-  <div class="form-group submit">
-    <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small">
-      <span class="glyphicon-search glyphicon"></span>
-      <span class="wb-inv">Search</span>
-    </button>
-  </div>
-</form> -->
 
 <form onsubmit="return searchPage();" role="search">
   <div class="form-group wb-srch-qry">
@@ -456,13 +443,21 @@ function searchPage() {
   const query = document.getElementById('wb-srch-q').value.trim();
   if (!query) return false;
 
+  // Escape special regex chars in the query
+  const escapeRegExp = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
+
   const body = document.body;
-  const regex = new RegExp(`(${query})`, 'gi');
   let found = false;
 
-  body.innerHTML = body.innerHTML.replace(regex, match => {
-    found = true;
-    return `<mark class="highlight" style="background-color: yellow;">${match}</mark>`;
+  // Replace only text BETWEEN tags: >text<
+  body.innerHTML = body.innerHTML.replace(/>([^<]+)</g, (full, text) => {
+    const replaced = text.replace(
+      regex,
+      '<mark class="highlight" style="background-color: yellow;">$1</mark>'
+    );
+    if (replaced !== text) found = true;
+    return '>' + replaced + '<';
   });
 
   if (found) {
