@@ -102,20 +102,32 @@ outline-offset: 2px;
 </div>
 </form> -->
 
-
-<form onsubmit="return searchPage();" role="search">
+<form onsubmit="return searchPage();" role="search" aria-label="Site search">
   <div class="form-group wb-srch-qry">
     <label for="wb-srch-q" class="wb-inv">Search this page</label>
-    <input id="wb-srch-q" class="wb-srch-q form-control" name="q" type="search"
-           placeholder="Search content..." />
+    <input
+      id="wb-srch-q"
+      class="wb-srch-q form-control"
+      name="q"
+      type="search"
+      placeholder="Search content..."
+      autocomplete="off"
+    />
   </div>
+
   <div class="form-group submit">
-    <button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small">
-      <span class="glyphicon-search glyphicon"></span>
+    <button
+      type="submit"
+      id="wb-srch-sub"
+      class="btn btn-primary btn-small"
+      aria-label="Start search"
+    >
+      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
       <span class="wb-inv">Search</span>
     </button>
   </div>
 </form>
+
 
 </section>
 
@@ -461,8 +473,11 @@ function myFunction() {
 }
 
 function searchPage() {
-  // Clear old highlights
-  document.querySelectorAll('.highlight').forEach(el => {
+  // Work only inside main content to avoid altering scripts/styles
+  const root = document.querySelector('main') || document.body;
+
+  // Clear old highlights in that region
+  root.querySelectorAll('.highlight').forEach(el => {
     el.outerHTML = el.innerText;
   });
 
@@ -473,11 +488,10 @@ function searchPage() {
   const escapeRegExp = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const regex = new RegExp(`(${escapeRegExp(query)})`, 'gi');
 
-  const body = document.body;
   let found = false;
 
-  // Replace only text BETWEEN tags: >text<
-  body.innerHTML = body.innerHTML.replace(/>([^<]+)</g, (full, text) => {
+  // Replace only text BETWEEN tags within <main>: >text<
+  root.innerHTML = root.innerHTML.replace(/>([^<]+)</g, (full, text) => {
     const replaced = text.replace(
       regex,
       '<mark class="highlight" style="background-color: yellow;">$1</mark>'
@@ -487,7 +501,7 @@ function searchPage() {
   });
 
   if (found) {
-    const first = document.querySelector('.highlight');
+    const first = root.querySelector('.highlight');
     if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
   } else {
     alert(`"${query}" not found on this page.`);
@@ -495,6 +509,7 @@ function searchPage() {
 
   return false; // prevent reload
 }
+
 </script>
 </body>
 </html>
