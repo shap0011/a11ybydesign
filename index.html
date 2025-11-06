@@ -14,16 +14,16 @@
 
 <style>
 button {
-  padding-top: 20px;
-  padding-right: 50px;
-  padding-bottom: 20px;
-  padding-left: 50px;
-
+  padding: 8px 30px 8px 30px;
+  font-size: 1.5em;
+  color: white;
 }
 table {
 font-family: Arial, Helvetica, sans-serif;
 border-collapse: collapse;
 width: 100%;
+overflow-wrap: break-word;
+word-break: break-word;
 }
 
 tr:hover {background-color: #ddd;}
@@ -55,8 +55,14 @@ a:focus-visible {
   width: 70%;
   padding: 5px 15px;
   text-align: left;
-  background-color: #545309;
+  background-color: #333;
+  color: #ffffff;
   margin: 15px;
+}
+
+a[role="menuitem"]:focus {	
+outline: 3px solid rgb(255, 187, 0);	
+outline-offset: 2px;	
 }
 
 </style>
@@ -67,7 +73,7 @@ a:focus-visible {
 
 <nav>
 <ul id="wb-tphp">
-<li class="wb-slc"><a class="wb-sl" href="#cont">Skip to main content</a></li>
+<li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
 </nav>
 
 <header>
@@ -243,8 +249,8 @@ a:focus-visible {
 <input type="text" id="fname" name="fname" value="John"><br>
 <label for="lname">Last name:</label><br>
 <input type="text" id="lname" name="lname" value="Doe"><br><br>
-<button class="w3-button" style="background-color:green;"></button>
-<button class="w3-button" style="background-color:red;"></button>
+<button class="w3-button" style="background-color:green;">Register</button>
+<button class="w3-button" style="background-color:red;">Cancel</button>
 </form>
 
 
@@ -254,13 +260,13 @@ a:focus-visible {
 <p>A sample of various logos durant the years</p>
 <div class="row">
 <section class="col-md-4">
-<img src="images/1989.gif" alt="Logo 1" class="img-responsive thumbnail"/><br>1989 logo
+<img src="images/1989.gif" alt="Batman logo, 1989" class="img-responsive thumbnail"/><br>1989 logo
 </section>
 <section class="col-md-4">
-<img src="images/1995.gif" alt="Logo 2" class="img-responsive thumbnail"/><br>1995 logo
+<img src="images/1995.gif" alt="Batman logo, 1995" class="img-responsive thumbnail"/><br>1995 logo
 </section>
 <section class="col-md-4">
-<img src="images/1997.gif" alt="Logo 3" class="img-responsive thumbnail"/><br>1997 logo
+<img src="images/1997.gif" alt="Batman logo, 1997" class="img-responsive thumbnail"/><br>1997 logo
 </section>
 </div>
 
@@ -270,17 +276,41 @@ a:focus-visible {
 
 <div class="row">
 <section class="col-md-6">
-<p><img src="images/movie.png" alt="Desciption of the interview"></p>
+<p><img src="images/movie.png" alt=""></p>
 </section>
 <section class="col-md-6">
 <figure class="wb-mltmd" data-wb-mltmd='{"shareUrl": "https://www.youtube.com/watch?v=h-JVjs9AAmQ"}'>
-<video title="Suspect">
+<video title="Suspect" video controls src="video/the-batman-interview.mp4">
 <source type="video/youtube" src="https://www.youtube.com/watch?v=h-JVjs9AAmQ" />
 </video>
 <figcaption>
-<p>Transcipt: Interview with batman</p>
+<p><strong>Transcript:</strong> Interview with Batman (captions available in player)</p>
 </figcaption>
 </figure>
+<figure>
+  <audio controls>
+    <source src="audio/the-batman-interview.mp3" type="audio/mpeg">
+  </audio>
+  <figcaption>
+    <p>Description: The Batman cast is shown speaking on stage about their roles.</p>
+  </figcaption>
+</figure>
+
+<!-- Video-only example -->
+<!-- <figure>
+  <video controls>
+    <source src="video/the-batman-interview.mp4" type="video/mp4">
+  </video>
+  <figcaption>Interview video: no audio track</figcaption>
+</figure> -->
+
+<!-- Audio-only example -->
+<!-- <figure>
+  <audio controls>
+    <source src="audio/the-batman-interview.mp3" type="audio/mpeg">
+  </audio>
+  <figcaption>Audio track of the Batman interview</figcaption>
+</figure> -->
 
 </div>
 
@@ -296,20 +326,20 @@ a:focus-visible {
 <p>Train in various martial arts disciplines like jiu-jitsu, kung fu, krav maga, and ninjutsu to excel in hand-to-hand combat. Batman is a master of multiple fighting styles.</p>
 </section>
 <section class="col-lg-4 col-md-6">
-<h3 class="h5">Step 3: Develop Detective Skills</h3>
-<p>Batman is often called the "World's Greatest Detective." Study forensic science, criminology, and psychology to sharpen your mind and solve complex problems.</p>
-</section>
-<section class="col-lg-4 col-md-6">
-<h3 class="h5">Step 5: Cultivate Mental Discipline and Strategy</h3>
-<p>Batman is known for his mental resilience, tactical genius, and preparation. Train your mind through meditation, strategic thinking, and problem-solving exercises.</p>
-</section>
-<section class="col-lg-4 col-md-6">
 <h3 class="h5">Step 2: Build Peak Physical Fitness</h3>
 <p>Attain peak physical condition with strength, agility, endurance, and flexibility through intense physical training and exercise regimes.</p>
 </section>
 <section class="col-lg-4 col-md-6">
+<h3 class="h5">Step 3: Develop Detective Skills</h3>
+<p>Batman is often called the "World's Greatest Detective." Study forensic science, criminology, and psychology to sharpen your mind and solve complex problems.</p>
+</section>
+<section class="col-lg-4 col-md-6">
 <h3 class="h5">Step 4: Acquire Advanced Gadgets and Technology</h3>
 <p>Batman uses cutting-edge technology and gadgets. Learn engineering, computer science, and technology development to create tools that assist in crime-fighting.</p>
+</section>
+<section class="col-lg-4 col-md-6">
+<h3 class="h5">Step 5: Cultivate Mental Discipline and Strategy</h3>
+<p>Batman is known for his mental resilience, tactical genius, and preparation. Train your mind through meditation, strategic thinking, and problem-solving exercises.</p>
 </section>
 <section class="col-lg-4 col-md-6">
 <h3 class="h5">Step 6: Amass Resources</h3>
